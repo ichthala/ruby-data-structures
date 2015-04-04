@@ -1,0 +1,1 @@
+require 'ruby_data_structures/priority_queue'
