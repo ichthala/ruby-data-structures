@@ -25,8 +25,9 @@ describe PriorityQueue do
     end
 
     context 'when no arguments are passed' do
-      it 'does not raise an error' do
-        expect { PriorityQueue.new }.not_to raise_error
+      it 'creates a queue with a nil value at index 0' do
+        pq = PriorityQueue.new
+        expect(pq.instance_eval { queue[0] }).to eq nil
       end
     end
 
@@ -34,10 +35,10 @@ describe PriorityQueue do
 
   describe '#min' do
 
-    it 'returns the highest priority event' do
-      queue = PriorityQueue.new
-      queue.instance_eval { @queue = [1, 2, 3] }
-      expect(queue.min).to eq 1
+    it 'returns the event at index 1' do
+      pq = PriorityQueue.new
+      pq.instance_eval { @queue = [1, 2, 3] }
+      expect(pq.min).to eq 2
     end
 
   end
@@ -47,10 +48,10 @@ describe PriorityQueue do
     context 'when the queue is empty' do
 
       it 'inserts the key-value pair as min' do
-        queue = PriorityQueue.new
-        queue.insert('22', 'Marie Antoinette executed')
+        pq = PriorityQueue.new
+        pq.insert('22', 'Marie Antoinette executed')
 
-        expect(queue.min.v).to eq 'Marie Antoinette executed'
+        expect(pq.min.v).to eq 'Marie Antoinette executed'
       end
 
     end
@@ -58,14 +59,14 @@ describe PriorityQueue do
     context 'when the queue is not empty' do
 
       it 'bubbles the key-value pair to the correct position' do
-        queue = PriorityQueue.new({
+        pq = PriorityQueue.new({
           '22' => 'Marie Antoinette executed',
           '18' => 'Reign of Terror',
           '10' => 'Bastille Day'
         })
 
-        queue.insert('8', 'Tennis Court Oath')
-        expect(queue.min.v).to eq 'Tennis Court Oath'
+        pq.insert('8', 'Tennis Court Oath')
+        expect(pq.min.v).to eq 'Tennis Court Oath'
       end
 
     end
