@@ -46,13 +46,27 @@ describe PriorityQueue do
 
     context 'when the queue is empty' do
 
-      it 'inserts the key-value pair as min'
+      it 'inserts the key-value pair as min' do
+        queue = PriorityQueue.new
+        queue.insert('22', 'Marie Antoinette executed')
+
+        expect(queue.min.v).to eq 'Marie Antoinette executed'
+      end
 
     end
 
     context 'when the queue is not empty' do
 
-      it 'bubbles the key-value pair to the correct position'
+      it 'bubbles the key-value pair to the correct position' do
+        queue = PriorityQueue.new({
+          '22' => 'Marie Antoinette executed',
+          '18' => 'Reign of Terror',
+          '10' => 'Bastille Day'
+        })
+
+        queue.insert('8', 'Tennis Court Oath')
+        expect(queue.min.v).to eq 'Tennis Court Oath'
+      end
 
     end
 
