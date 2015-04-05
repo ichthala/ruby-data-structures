@@ -32,4 +32,30 @@ describe PriorityQueue do
 
   end
 
+  describe '#min' do
+
+    it 'returns the highest priority event' do
+      queue = PriorityQueue.new
+      queue.instance_eval { @queue = [1, 2, 3] }
+      expect(queue.min).to eq 1
+    end
+
+  end
+
+  describe '#insert' do
+
+    context 'when the queue is empty' do
+
+      it 'inserts the key-value pair as min'
+
+    end
+
+    context 'when the queue is not empty' do
+
+      it 'bubbles the key-value pair to the correct position'
+
+    end
+
+  end
+
 end
