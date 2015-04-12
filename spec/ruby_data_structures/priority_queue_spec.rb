@@ -73,4 +73,31 @@ describe PriorityQueue do
 
   end
 
+  describe '#remove_min' do
+
+    it 'returns the minimum' do
+      pq = PriorityQueue.new({
+        '22' => 'Marie Antoinette executed',
+        '18' => 'Reign of Terror',
+      })
+
+      expect(pq.remove_min.v).to eq('Reign of Terror')
+    end
+
+    it 'resets the queue' do
+      pq = PriorityQueue.new({
+        '22' => 'Marie Antoinette executed',
+        '18' => 'Reign of Terror',
+        '10' => 'Bastille Day',
+        '8' => 'Tennis Court Oath'
+      })
+
+      pq.remove_min
+      expect(pq.remove_min.v).to eq('Bastille Day')
+      expect(pq.remove_min.v).to eq('Reign of Terror')
+      expect(pq.remove_min.v).to eq('Marie Antoinette executed')
+    end
+
+  end
+
 end
